@@ -17,10 +17,11 @@ public class BankVO {
 
     private int money;    // 금액
 
+
     public BankVO(String name, String bankName, String accountNum) {
         this.name = name;
         this.accountNum = accountNum;
-        this.balance = balance;
+        this.balance = "14000";
 //        this.transactionDate = LocalDate.now();
 //        this.transactionTime = LocalDateTime.now();
         this.isDeposit = isDeposit;

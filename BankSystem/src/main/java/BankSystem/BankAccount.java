@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class BankAccount {
     static Scanner sc = new Scanner(System.in);
     static List<BankVO> bankusers = new ArrayList<>();
+
     public void run() { // 시스템메뉴
 
         int key = 0;
@@ -123,11 +124,58 @@ public class BankAccount {
     }
 
     private void accountDeposit() { // 예금
+        sc.nextLine();
+        String account = getStrInput("계좌 번호를 입력하세요. :");
+        int money = 0;
+        int newBalance = 0;
 
+        for (int i = 0; i < bankusers.size(); i++) {
+            if (bankusers.get(i).getAccountNum().contains(account)) {
+                if (account.equals(bankusers.get(i).getAccountNum())) {
+
+                    money = getNumInput("입금액 입력 :");
+                    newBalance = Integer.parseInt(bankusers.get(i).getBalance()) + money;
+                    bankusers.get(i).setBalance(String.valueOf(newBalance));
+                    System.out.println(money + "원이 입금되었습니다. 현재 잔액 " + bankusers.get(i).getBalance());
+                    break;
+                }
+            } else {
+                System.out.println("계좌 번호를 확인 하세요.");
+                break;
+            }
+
+        }
     }
 
     private void accountWithdrewal() { // 출금
+        sc.nextLine();
+        String account = getStrInput("계좌 번호를 입력 :");
+        int money = 0;
+        int newBalance = 0;
 
+        for (int i = 0; i < bankusers.size(); i++) {
+            if (bankusers.get(i).getAccountNum().contains(account)) {
+
+                if (account.equals(bankusers.get(i).getAccountNum())) {
+                    money = getNumInput("출금액 입력 :");
+                    if (Integer.parseInt(bankusers.get(i).getBalance()) > money) {
+
+                        newBalance = Integer.parseInt(bankusers.get(i).getBalance()) - money;
+                        bankusers.get(i).setBalance(String.valueOf(newBalance));
+                        System.out.println(money + "원이 출금되었습니다. 현재 잔액 " + bankusers.get(i).getBalance());
+                        break;
+                    } else {
+                        System.out.println("잔액이 부족합니다. 출금 가능액 :" + bankusers.get(i).getBalance() + "원");
+                    }
+
+                }
+            } else {
+                System.out.println("계좌 번호를 확인 하세요.");
+                break;
+            }
+
+
+        }
     }
 
     private String getStrInput(String s) {
@@ -148,12 +196,12 @@ public class BankAccount {
 
     private int bankmenu() {
         System.out.println("========Bank Update / Delete=========");
-        return getNumInput("| 1.등록 | 2.수정 | 3.삭제 | 0.종료 |");
+        return getNumInput("| 1.등록 | 2.수정 | 3.삭제 | 0.이전메뉴 |");
     }
 
     private int clientmenu() {
         System.out.println("=========Client Management=========");
-        return getNumInput("| 1.계좌관리 | 2.계좌목록 | 0.종료 |");
+        return getNumInput("| 1.계좌관리 | 2.계좌목록 | 0.이전메뉴 |");
     }
 }
 
