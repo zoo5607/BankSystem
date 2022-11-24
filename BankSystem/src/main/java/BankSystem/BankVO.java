@@ -1,5 +1,5 @@
 package BankSystem;
-import java.time.LocalDate;
+import java.lang.constant.Constable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -32,10 +32,10 @@ public class BankVO {
         this.money = money;
     }
 
-    public void transcationDate(){
-        System.out.println(DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now()));
+    public Constable transcationDate(){
+        String date = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now());
+        return date;
     }
-
 
 
     public String getName() {
