@@ -8,8 +8,8 @@ public class BankVO {
     private String name; //이름
     private String accountNum; //계좌 번호
     private String balance;  //잔고
-    private LocalDate transactionDate; // 거래 일자
-    private LocalDateTime transactionTime; // 거래 시간
+    private LocalDate transactionDate ; // 거래 일자
+    private LocalDateTime transactionTime ; // 거래 시간
     private String isDeposit;  // 입금
     private String isWithdrawal; // 출금
     private String transactionAmount; // 거래 금액
@@ -19,8 +19,8 @@ public class BankVO {
         this.name = name;
         this.accountNum = accountNum;
         this.balance = balance;
-        this.transactionDate = new Date;
-        this.transactionTime = new Date;
+        this.transactionDate = LocalDate.now();
+        this.transactionTime = LocalDateTime.now();
         this.isDeposit = this.isDeposit;
         this.isWithdrawal = isWithdrawal;
         this.transactionAmount = transactionAmount;
