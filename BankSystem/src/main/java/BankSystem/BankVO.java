@@ -10,8 +10,8 @@ public class BankVO {
     private String balance;  //잔고
     private LocalDate transactionDate ; // 거래 일자
     private LocalDateTime transactionTime ; // 거래 시간
-    private String isDeposit;  // 입금
-    private String isWithdrawal; // 출금
+    private boolean isDeposit;  // 입금
+    private boolean isWithdrawal; // 출금
     private String transactionAmount; // 거래 금액
     private String bankName; // 은행명
 
@@ -68,19 +68,19 @@ public class BankVO {
         this.transactionTime = transactionTime;
     }
 
-    public String getIsDeposit() {
+    public boolean getIsDeposit() {
         return isDeposit;
     }
 
-    public void setIsDeposit(String isDeposit) {
+    public void setIsDeposit(boolean isDeposit) {
         this.isDeposit = isDeposit;
     }
 
-    public String getIsWithdrawal() {
+    public boolean getIsWithdrawal() {
         return isWithdrawal;
     }
 
-    public void setIsWithdrawal(String isWithdrawal) {
+    public void setIsWithdrawal(boolean isWithdrawal) {
         this.isWithdrawal = isWithdrawal;
     }
 
@@ -105,6 +105,7 @@ public class BankVO {
         return "이름: " +name + "|" + "은행명: " + bankName + "|"+ "계좌번호: " + accountNum+"|" + "입금액: " + isDeposit ;
     }
 
-
+     // 출금 후 잔고 = 기존잔고 - 거래금액
+    // 입금 후 잔고 = 기존잔고 + 거래금액
 
 }
