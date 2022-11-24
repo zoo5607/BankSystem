@@ -129,10 +129,10 @@ public class BankAccount {
         int money = 0;
         int newBalance = 0;
 
+
         for (int i = 0; i < bankusers.size(); i++) {
             if (bankusers.get(i).getAccountNum().contains(account)) {
                 if (account.equals(bankusers.get(i).getAccountNum())) {
-
                     money = getNumInput("입금액 입력 :");
                     newBalance = Integer.parseInt(bankusers.get(i).getBalance()) + money;
                     bankusers.get(i).setBalance(String.valueOf(newBalance));
