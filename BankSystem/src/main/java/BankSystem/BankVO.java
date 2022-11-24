@@ -15,7 +15,9 @@ public class BankVO {
     private String transactionAmount; // 거래 금액
     private String bankName; // 은행명
 
-    public BankVO(String name, String bankName, String accountNum, boolean isDeposit) {
+    private int money;    // 금액
+
+    public BankVO(String name, String bankName, String accountNum) {
         this.name = name;
         this.accountNum = accountNum;
         this.balance = balance;
@@ -25,6 +27,7 @@ public class BankVO {
         this.isWithdrawal = isWithdrawal;
         this.transactionAmount = transactionAmount;
         this.bankName = bankName;
+        this.money = money;
     }
 
 
@@ -98,6 +101,13 @@ public class BankVO {
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     @Override
