@@ -126,16 +126,17 @@ public class BankAccount {
     private void accountDeposit() { // 예금
         sc.nextLine();
         String account = getStrInput("계좌 번호를 입력하세요. :");
-        int money = 0;
-        int newBalance = 0;
+        int money = 0;      // 입금액
+        int newBalance = 0; // 입금액이 더해질 새로운 잔고
 
 
         for (int i = 0; i < bankusers.size(); i++) {
-            if (bankusers.get(i).getAccountNum().contains(account)) {
-                if (account.equals(bankusers.get(i).getAccountNum())) {
+            if (bankusers.get(i).getAccountNum().contains(account)) { // contains() 입력한 계좌번호가 존재하는지 판별
+                if (account.equals(bankusers.get(i).getAccountNum())) { // 입력값과 기존 계좌번호가 동일한지 판별
                     money = getNumInput("입금액 입력 :");
-                    newBalance = Integer.parseInt(bankusers.get(i).getBalance()) + money;
-                    bankusers.get(i).setBalance(String.valueOf(newBalance));
+                    newBalance = Integer.parseInt(bankusers.get(i).getBalance()) + money; // Integer.parseInt(String s) 문자열을 정수 값으로 변환 후
+                                                                                          // 입금 금액 더해 줌
+                    bankusers.get(i).setBalance(String.valueOf(newBalance)); // String.valueOf() 숫자 값을 문자열로 변환
                     bankusers.get(i).transcationDate();
                     System.out.println(money + "원이 입금되었습니다. 현재 잔액: " + bankusers.get(i).getBalance()+"원 입금날짜 :"+ bankusers.get(i).transcationDate());
                     break;
@@ -159,7 +160,7 @@ public class BankAccount {
 
                 if (account.equals(bankusers.get(i).getAccountNum())) {
                     money = getNumInput("출금액 입력 :");
-                    if (Integer.parseInt(bankusers.get(i).getBalance()) > money) {
+                    if (Integer.parseInt(bankusers.get(i).getBalance()) > money) { // 잔액이 출금액보다 크면
 
                         newBalance = Integer.parseInt(bankusers.get(i).getBalance()) - money;
                         bankusers.get(i).setBalance(String.valueOf(newBalance));
@@ -175,7 +176,6 @@ public class BankAccount {
                 System.out.println("계좌 번호를 확인 하세요.");
                 break;
             }
-
 
         }
     }
