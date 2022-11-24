@@ -1,6 +1,7 @@
 package BankSystem;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class BankVO {
@@ -21,7 +22,7 @@ public class BankVO {
     public BankVO(String name, String bankName, String accountNum) {
         this.name = name;
         this.accountNum = accountNum;
-        this.balance = "14000";
+        this.balance = "10000";
 //        this.transactionDate = LocalDate.now();
 //        this.transactionTime = LocalDateTime.now();
         this.isDeposit = isDeposit;
@@ -31,15 +32,10 @@ public class BankVO {
         this.money = money;
     }
 
-    public String transcationTime(){
-        int hour = LocalDateTime.now().getHour();
-        int minute = LocalDateTime.now().getMinute();
-        return hour + ":"+ minute;
+    public void transcationDate(){
+        System.out.println(DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now()));
     }
-    public String transcationDate(){
-        String day = String.valueOf(LocalDate.now());
-        return day;
-    }
+
 
 
     public String getName() {
