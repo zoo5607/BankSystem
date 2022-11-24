@@ -31,7 +31,7 @@ public class BankAccount {
             String accountNum = getStrInput("계좌번호: ");
             String isDeposit = getStrInput("입금금액: ");
 
-            bankusers.add(new BankVO(name, bankName, accountNum, isDeposit));
+            bankusers.add(new BankVO(name,bankName,accountNum,isDeposit));
             System.out.println("계좌 등록 성공");
             }
 

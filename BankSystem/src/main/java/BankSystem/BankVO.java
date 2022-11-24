@@ -15,7 +15,7 @@ public class BankVO {
     private String transactionAmount; // 거래 금액
     private String bankName; // 은행명
 
-    public BankVO(String name, String accountNum, String balance, String bankName) {
+    public BankVO(String name, String bankName, String accountNum, String isDeposit) {
         this.name = name;
         this.accountNum = accountNum;
         this.balance = balance;
@@ -26,6 +26,7 @@ public class BankVO {
         this.transactionAmount = transactionAmount;
         this.bankName = bankName;
     }
+
 
     public String getName() {
         return name;
@@ -103,5 +104,7 @@ public class BankVO {
     public String toString() {
         return "이름: " +name + "|" + "은행명: " + bankName + "|"+ "계좌번호: " + accountNum+"|" + "입금액: " + isDeposit ;
     }
+
+
 
 }
