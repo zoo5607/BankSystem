@@ -3,17 +3,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BankVO {
-    public BankVO(String name, String accountNum, String balance, Date transactionDate, Date transactionTime, String isDeposit, String isWithdrawal, String transactionAmount, String bankName) {
-        this.name = name;
-        this.accountNum = accountNum;
-        this.balance = balance;
-        this.transactionDate = transactionDate;
-        this.transactionTime = transactionTime;
-        this.isDeposit = isDeposit;
-        this.isWithdrawal = isWithdrawal;
-        this.transactionAmount = transactionAmount;
-        this.bankName = bankName;
-    }
 
     private String name; //이름
     private String accountNum; //계좌 번호
@@ -25,6 +14,52 @@ public class BankVO {
     private String transactionAmount; // 거래 금액
     private String bankName; // 은행명
 
+    public BankVO(String name, String accountNum, String balance, Date transactionDate, Date transactionTime, String isDeposit, String isWithdrawal, String transactionAmount, String bankName) {
+        this.name = name;
+        this.accountNum = accountNum;
+        this.balance = balance;
+        this.transactionDate = transactionDate;
+        this.transactionTime = transactionTime;
+        this.isDeposit = isDeposit;
+        this.isWithdrawal = isWithdrawal;
+        this.transactionAmount = transactionAmount;
+        this.bankName = bankName;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAccountNum(String accountNum) {
+        this.accountNum = accountNum;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
+
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
+    }
+
+    public void setTransactionTime(Date transactionTime) {
+        this.transactionTime = transactionTime;
+    }
+
+    public void setIsDeposit(String isDeposit) {
+        this.isDeposit = isDeposit;
+    }
+
+    public void setIsWithdrawal(String isWithdrawal) {
+        this.isWithdrawal = isWithdrawal;
+    }
+
+    public void setTransactionAmount(String transactionAmount) {
+        this.transactionAmount = transactionAmount;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
 
     public String getName() {
         return name;
