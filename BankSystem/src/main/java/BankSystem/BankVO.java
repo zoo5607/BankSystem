@@ -21,7 +21,7 @@ public class BankVO {
         this.balance = balance;
         this.transactionDate = LocalDate.now();
         this.transactionTime = LocalDateTime.now();
-        this.isDeposit = this.isDeposit;
+        this.isDeposit = isDeposit;
         this.isWithdrawal = isWithdrawal;
         this.transactionAmount = transactionAmount;
         this.bankName = bankName;
