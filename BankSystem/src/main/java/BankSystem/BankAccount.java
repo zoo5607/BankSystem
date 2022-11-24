@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class BankAccount {
     static Scanner sc = new Scanner(System.in);
     static List<BankVO> bankusers = new ArrayList<>();
-
     public void run() { // 시스템메뉴
 
         int key = 0;
@@ -64,10 +63,10 @@ public class BankAccount {
         System.out.println("수정하실 고객명을 입력해주세요.");
         Scanner scanner = new Scanner(System.in);
 
-        String bankName = scanner.nextLine();
+        String name = scanner.nextLine();
 
         for (int i = 0; i < bankusers.size(); i++) {
-            if (bankName.equals(bankusers.get(i).getBankName())) {
+            if (name.equals(bankusers.get(i).getName())) {
                 System.out.println("계좌번호를 입력해 주세요");
                 String accountNum = scanner.nextLine();
                 if (accountNum.equals(bankusers.get(i).getAccountNum())) {
@@ -79,10 +78,8 @@ public class BankAccount {
                 } else {
                     System.out.println("계좌번호가 틀립니다.");
                 }
-
             }
         }
-        System.out.println("회원 정보가 없습니다.");
     }
 
     private void Delete() { // 삭제
@@ -90,7 +87,7 @@ public class BankAccount {
         String name = getStrInput("삭제할 이름 :");
 
         for (int i = 0; i < bankusers.size(); i++) {
-            if (name == bankusers.get(i).getName()) {
+            if (name.equals(bankusers.get(i).getName())) {
                 bankusers.remove(i);
                 System.out.println("삭제되었습니다.");
             } else {
