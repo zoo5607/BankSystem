@@ -1,16 +1,18 @@
 package BankSystem;
-//import java.lang.constant.Constable;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class BankVO {
 
     private String name; //이름
-    private String accountNum; //계좌 번호
+    private static String accountNum; //계좌 번호
+
     private String balance;  //잔고
-    private String transactionDate ; // 거래 일자
-    //    private LocalDateTime transactionTime ; // 거래 시간
+    //    private LocalDate transactionDate ; // 거래 일자
+    private LocalDateTime transactionTime  ; // 거래 시간
     private boolean isDeposit;  // 입금
     private boolean isWithdrawal; // 출금
     private String transactionAmount; // 거래 금액
@@ -19,13 +21,12 @@ public class BankVO {
     private int money;    // 금액
 
 
-
     public BankVO(String name, String bankName, String accountNum) {
         this.name = name;
         this.accountNum = accountNum;
         this.balance = "10000";
-        this.transactionDate = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now());
-//        this.transactionTime = LocalDateTime.now();
+//        this.transactionDate = LocalDate.now();
+        this.transactionTime = LocalDateTime.now();
         this.isDeposit = isDeposit;
         this.isWithdrawal = isWithdrawal;
         this.transactionAmount = transactionAmount;
@@ -33,27 +34,11 @@ public class BankVO {
         this.money = money;
     }
 
-    public BankVO(String name, String bankName, String accountNum, String balance, int money, String tradeTime, boolean isDeposit, boolean isWithdrawal) {
-        this.name = name;
-        this.accountNum = accountNum;
-        this.balance = balance;
-        this.transactionDate = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now());
-//        this.transactionTime = LocalDateTime.now();
-        this.isDeposit = isDeposit;
-        this.isWithdrawal = isWithdrawal;
-       //this.transactionAmount = transactionAmount;
-        this.bankName = bankName;
-        this.money = money;
-    }
+//    public Constable transcationDate(){
+//        String date = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now());
+//        return date;
+//    }
 
-    /*public String createTranscationDate(){
-        String date = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now());
-        return date;
-    }*/
-
-
-    public String getTransactionDate(){ return transactionDate; }
-    public void setTransactionDate(String tradeDate){transactionDate=tradeDate;}
 
     public String getName() {
         return name;
@@ -78,7 +63,7 @@ public class BankVO {
     public void setBalance(String balance) {
         this.balance = balance;
     }
-//
+    //
 //    public LocalDate getTransactionDate() {
 //        return transactionDate;
 //    }
@@ -87,13 +72,13 @@ public class BankVO {
 //        this.transactionDate = transactionDate;
 //    }
 //
-//    public LocalDateTime getTransactionTime() {
-//        return transactionTime;
-//    }
-//
-//    public void setTransactionTime(LocalDateTime transactionTime) {
-//        this.transactionTime = transactionTime;
-//    }
+    public LocalDateTime getTransactionTime() {
+        return transactionTime;
+    }
+
+    public void setTransactionTime(LocalDateTime transactionTime) {
+        this.transactionTime = transactionTime;
+    }
 
     public boolean getIsDeposit() {
         return isDeposit;
@@ -134,9 +119,14 @@ public class BankVO {
         this.money = money;
     }
 
+    private static final String LAST_10_CHAR_PATTERN = "(.{10}$)";
+
     @Override
     public String toString() {
-        return "이름: " +name + "|" + "은행명: " + bankName + "|"+ "계좌번호: " + accountNum+"|" + "입금액: " + isDeposit;
+        return "이름: " +name + "|" + "은행명: " + bankName + "|"+ "계좌번호: " +  accountNum.replaceAll(LAST_10_CHAR_PATTERN, "**********") +"|"+ "입금액: " + isDeposit;
+    }
+
+    public void transactionTime() {
     }
 
 
