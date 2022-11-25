@@ -23,38 +23,6 @@ public class ClientManagement extends BankVO{
     }
 
 
-
-    /*public ClientManagement(String name, String bankName, String accountNum) {
-        this.name = super.getName();
-        this.accountNum = accountNum;
-        this.balance = "10000";
-        this.transactionDate = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now());
-//        this.transactionTime = LocalDateTime.now();
-        this.isDeposit = isDeposit;
-        this.isWithdrawal = isWithdrawal;
-        this.transactionAmount = transactionAmount;
-        this.bankName = bankName;
-        this.money = money;
-    }*/
-
-    /*public ClientManagement(String name, String bankName, String accountNum, String balance, int money, String tradeTime, boolean isDeposit, boolean isWithdrawal) {
-        this.name = super.getName();
-        this.accountNum = super.getAccountNum();
-        this.balance = super.getBalance();
-        this.transactionDate = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now());
-//        this.transactionTime = LocalDateTime.now();
-        this.isDeposit = super.getIsDeposit();
-        this.isWithdrawal = super.getIsWithdrawal();
-        //this.transactionAmount = transactionAmount;
-        this.bankName = super.getBankName();
-        this.money = super.getMoney();
-    }*/
-
-    /*public String createTranscationDate(){
-        String date = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now());
-        return date;
-    }*/
-
     public String getTransactionDate(){ return transactionDate; }
     public void setTransactionDate(String tradeDate){transactionDate=tradeDate;}
 
@@ -81,22 +49,6 @@ public class ClientManagement extends BankVO{
     public void setBalance(String balance) {
         this.balance = balance;
     }
-//
-//    public LocalDate getTransactionDate() {
-//        return transactionDate;
-//    }
-//
-//    public void setTransactionDate(LocalDate transactionDate) {
-//        this.transactionDate = transactionDate;
-//    }
-//
-//    public LocalDateTime getTransactionTime() {
-//        return transactionTime;
-//    }
-//
-//    public void setTransactionTime(LocalDateTime transactionTime) {
-//        this.transactionTime = transactionTime;
-//    }
 
     public boolean getIsDeposit() {
         return isDeposit;
