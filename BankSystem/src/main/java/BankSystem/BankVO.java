@@ -10,7 +10,7 @@ public class BankVO {
     private String accountNum; //계좌 번호
     private String balance;  //잔고
 //    private LocalDate transactionDate ; // 거래 일자
-//    private LocalDateTime transactionTime ; // 거래 시간
+    private LocalDateTime transactionTime  ; // 거래 시간
     private boolean isDeposit;  // 입금
     private boolean isWithdrawal; // 출금
     private String transactionAmount; // 거래 금액
@@ -24,7 +24,7 @@ public class BankVO {
         this.accountNum = accountNum;
         this.balance = "10000";
 //        this.transactionDate = LocalDate.now();
-//        this.transactionTime = LocalDateTime.now();
+        this.transactionTime = LocalDateTime.now();
         this.isDeposit = isDeposit;
         this.isWithdrawal = isWithdrawal;
         this.transactionAmount = transactionAmount;
@@ -32,10 +32,10 @@ public class BankVO {
         this.money = money;
     }
 
-    public Constable transcationDate(){
-        String date = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now());
-        return date;
-    }
+//    public Constable transcationDate(){
+//        String date = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now());
+//        return date;
+//    }
 
 
     public String getName() {
@@ -70,13 +70,13 @@ public class BankVO {
 //        this.transactionDate = transactionDate;
 //    }
 //
-//    public LocalDateTime getTransactionTime() {
-//        return transactionTime;
-//    }
-//
-//    public void setTransactionTime(LocalDateTime transactionTime) {
-//        this.transactionTime = transactionTime;
-//    }
+    public LocalDateTime getTransactionTime() {
+        return transactionTime;
+    }
+
+    public void setTransactionTime(LocalDateTime transactionTime) {
+        this.transactionTime = transactionTime;
+    }
 
     public boolean getIsDeposit() {
         return isDeposit;
@@ -122,7 +122,10 @@ public class BankVO {
         return "이름: " +name + "|" + "은행명: " + bankName + "|"+ "계좌번호: " + accountNum+"|" + "입금액: " + isDeposit;
     }
 
-     // 출금 후 잔고 = 기존잔고 - 거래금액
+    public void transactionTime() {
+    }
+
+    // 출금 후 잔고 = 기존잔고 - 거래금액
     // 입금 후 잔고 = 기존잔고 + 거래금액
 
 }
