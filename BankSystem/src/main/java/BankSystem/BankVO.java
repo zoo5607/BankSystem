@@ -32,11 +32,11 @@ public class BankVO {
         this.money = money;
     }
 
-    public BankVO(String name, String bankName, String accountNum, String balance, int money, String tradeTime, boolean isDeposit, boolean isWithdrawal) {
+    public BankVO(String name, String bankName, String accountNum, String balance, int money, String tradeDate, boolean isDeposit, boolean isWithdrawal) {
         this.name = name;
         this.accountNum = accountNum;
         this.balance = balance;
-        this.transactionDate = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now());
+        this.transactionDate = tradeDate;
 //        this.transactionTime = LocalDateTime.now();
         this.isDeposit = isDeposit;
         this.isWithdrawal = isWithdrawal;

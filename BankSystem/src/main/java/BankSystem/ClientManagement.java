@@ -2,6 +2,7 @@ package BankSystem;
 //import java.lang.constant.Constable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 
 public class ClientManagement extends BankVO{
@@ -89,8 +90,10 @@ public class ClientManagement extends BankVO{
         this.money = money;
     }
 
+
     @Override
     public String toString() {
+
         if(super.getIsDeposit()){
             return "이름: " + super.getName() + "|" + "은행명: " + super.getBankName() + "|"+ "계좌번호: " + super.getAccountNum()+"|" +
                     "입금액: " + super.getMoney() + "|" + "잔고: " + super.getBalance()+ "| " + super.getTransactionDate();

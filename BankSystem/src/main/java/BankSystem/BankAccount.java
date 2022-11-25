@@ -1,5 +1,7 @@
 package BankSystem;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class BankAccount {
@@ -111,10 +113,14 @@ public class BankAccount {
     }
 
     private void clientManagement() { // 계좌 관리
+
         Iterator<ClientManagement> ite = transactionHistory.iterator();
 
         while (ite.hasNext()) {
+
             System.out.println(ite.next() + " ");
+
+
         }
     }
 
@@ -138,39 +144,39 @@ public class BankAccount {
 
         for (int i = 0; i < bankusers.size(); i++) {
 
-            if (bankusers.get(i).getAccountNum().contains(account)) { // contains() 입력한 계좌번호가 존재하는지 판별
-                if (account.equals(bankusers.get(i).getAccountNum())) { // 입력값과 기존 계좌번호가 동일한지 판별
-                    money = getNumInput("입금액 입력 :");
-                    newBalance = Integer.parseInt(bankusers.get(i).getBalance()) + money; // Integer.parseInt(String s) 문자열을 정수 값으로 변환 후
-                    // 입금 금액 더해 줌
+            if (account.equals(bankusers.get(i).getAccountNum())) { // 입력값과 기존 계좌번호가 동일한지 판별
+                money = getNumInput("입금액 입력 :");
+                newBalance = Integer.parseInt(bankusers.get(i).getBalance()) + money; // Integer.parseInt(String s) 문자열을 정수 값으로 변환 후
+                // 입금 금액 더해 줌
+                bankusers.get(i).setTransactionDate(DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now()));
+                bankusers.get(i).setMoney(money);
+                bankusers.get(i).setBalance(String.valueOf(newBalance)); // String.valueOf() 숫자 값을 문자열로 변환
+                tradeDate = bankusers.get(i).getTransactionDate();
+                bankusers.get(i).setTransactionDate(tradeDate);
 
-                    bankusers.get(i).setMoney(money);
-                    bankusers.get(i).setBalance(String.valueOf(newBalance)); // String.valueOf() 숫자 값을 문자열로 변환
-                    tradeDate = bankusers.get(i).getTransactionDate();
-                    bankusers.get(i).setTransactionDate(tradeDate);
+                isDeposit = true;
+                bankusers.get(i).setIsDeposit(isDeposit);
+                bankusers.get(i).setIsWithdrawal(false);
+                transactionHistory.add(new ClientManagement(bankusers.get(i).getName(), bankusers.get(i).getBankName(),
+                        account, String.valueOf(newBalance), money, tradeDate, bankusers.get(i).getIsDeposit(), bankusers.get(i).getIsWithdrawal()));
+                // bankusers.get(i).transactionTime();
+                System.out.println(money + "원이 입금되었습니다. 현재 잔액: " + bankusers.get(i).getBalance() + "원 입금날짜 :" + bankusers.get(i).getTransactionDate());
 
-                    isDeposit = true;
-                    bankusers.get(i).setIsDeposit(isDeposit);
-                    bankusers.get(i).setIsWithdrawal(false);
-                    transactionHistory.add(new ClientManagement(bankusers.get(i).getName(), bankusers.get(i).getBankName(),
-                            bankusers.get(i).getAccountNum(), bankusers.get(i).getBalance(), bankusers.get(i).getMoney(),
-                            bankusers.get(i).getTransactionDate(), bankusers.get(i).getIsDeposit(), bankusers.get(i).getIsWithdrawal()));
-                    // bankusers.get(i).transactionTime();
-                    System.out.println(money + "원이 입금되었습니다. 현재 잔액: " + bankusers.get(i).getBalance() + "원 입금날짜 :" + bankusers.get(i).getTransactionDate());
-
-                    break;
-                }
+                break;
             } else {
-                System.out.println("계좌 번호를 확인하세요.");
-                continue;
-            }
+                if (i < bankusers.size() - 1) {
+                    continue;
+                } else {
+                    System.out.println("계좌 번호를 확인하세요.");
+                }
 
+            }
         }
 
 
     }
 
-    private boolean checkAccountExist(int listIndex, String account){
+    private boolean checkAccountExist(int listIndex, String account) {
 
         // contains() 입력한 계좌번호가 존재하는지 판별
         return bankusers.get(listIndex).getAccountNum().contains(account);
@@ -186,39 +192,34 @@ public class BankAccount {
 
         for (int i = 0; i < bankusers.size(); i++) {
 
-            if (bankusers.get(i).getAccountNum().contains(account)) {
+            if (account.equals(bankusers.get(i).getAccountNum())) { // 입력값과 기존 계좌번호가 동일한지 판별
+                money = getNumInput("출금액 입력 :");
+                newBalance = Integer.parseInt(bankusers.get(i).getBalance()) - money; // Integer.parseInt(String s) 문자열을 정수 값으로 변환 후
+                // 입금 금액 더해 줌
+                bankusers.get(i).setTransactionDate(DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분").format(LocalDateTime.now()));
 
-                if (account.equals(bankusers.get(i).getAccountNum())) {
-                    money = getNumInput("출금액 입력 :");
-                    if (Integer.parseInt(bankusers.get(i).getBalance()) > money) { // 잔액이 출금액보다 크면
+                bankusers.get(i).setMoney(money);
+                bankusers.get(i).setBalance(String.valueOf(newBalance)); // String.valueOf() 숫자 값을 문자열로 변환
+                tradeDate = bankusers.get(i).getTransactionDate();
+                bankusers.get(i).setTransactionDate(tradeDate);
 
-                        newBalance = Integer.parseInt(bankusers.get(i).getBalance()) - money;
-                        bankusers.get(i).setMoney(money);
 
-                        bankusers.get(i).setBalance(String.valueOf(newBalance));
+                bankusers.get(i).setIsDeposit(false);
+                bankusers.get(i).setIsWithdrawal(true);
+                transactionHistory.add(new ClientManagement(bankusers.get(i).getName(), bankusers.get(i).getBankName(),
+                        account, String.valueOf(newBalance), money, tradeDate, bankusers.get(i).getIsDeposit(), bankusers.get(i).getIsWithdrawal()));
+                // bankusers.get(i).transactionTime();
+                System.out.println(money + "원이 출금되었습니다. 현재 잔액: " + bankusers.get(i).getBalance() + "원 입금날짜 :" + bankusers.get(i).getTransactionDate());
 
-                        tradeDate = bankusers.get(i).getTransactionDate();
-                        bankusers.get(i).setTransactionDate(tradeDate);
-
-                        bankusers.get(i).setIsDeposit(false);
-                        bankusers.get(i).setIsWithdrawal(true);
-                        transactionHistory.add(new ClientManagement(bankusers.get(i).getName(), bankusers.get(i).getBankName(),
-                                bankusers.get(i).getAccountNum(), bankusers.get(i).getBalance(), bankusers.get(i).getMoney(),
-                                bankusers.get(i).getTransactionDate(), bankusers.get(i).getIsDeposit(), bankusers.get(i).getIsWithdrawal()));
-
-                        System.out.println(money + "원이 출금되었습니다. 현재 잔액 " + bankusers.get(i).getBalance() + "원 출금날짜 :" + bankusers.get(i).getTransactionDate());
-
-                        break;
-                    } else {
-                        System.out.println("잔액이 부족합니다. 출금 가능액 :" + bankusers.get(i).getBalance() + "원");
-                    }
-
-                }
-            } else {
-                System.out.println("계좌 번호를 확인하세요.");
                 break;
-            }
+            } else {
+                if (i < bankusers.size() - 1) {
+                    continue;
+                } else {
+                    System.out.println("계좌 번호를 확인하세요.");
+                }
 
+            }
         }
     }
 
