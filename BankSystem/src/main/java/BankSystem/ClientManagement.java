@@ -91,14 +91,17 @@ public class ClientManagement extends BankVO{
     }
 
 
+    private static final String LAST_10_CHAR_PATTERN = "(.{10}$)";
+
+
     @Override
     public String toString() {
 
-        if(super.getIsDeposit()){
-            return "이름: " + super.getName() + "|" + "은행명: " + super.getBankName() + "|"+ "계좌번호: " + super.getAccountNum()+"|" +
+        if(super.getIsDeposit()){  // getIsDeposit() 입금 여부 판별
+            return "이름: " + super.getName() + "|" + "은행명: " + super.getBankName() + "|"+ "계좌번호: " + super.getAccountNum().replaceAll(LAST_10_CHAR_PATTERN, "**********")+"|" +
                     "입금액: " + super.getMoney() + "|" + "잔고: " + super.getBalance()+ "| " + super.getTransactionDate();
-        } else if (super.getIsWithdrawal()) {
-            return "이름: " + super.getName() + "|" + "은행명: " + super.getBankName() + "|"+ "계좌번호: " + super.getAccountNum()+"|" +
+        } else if (super.getIsWithdrawal()) {  // getIsWithrawal() 출금 여부 판별
+            return "이름: " + super.getName() + "|" + "은행명: " + super.getBankName() + "|"+ "계좌번호: " + super.getAccountNum().replaceAll(LAST_10_CHAR_PATTERN, "**********")+"|" +
                     "출금액: " + super.getMoney() + "|" + "잔고: " + super.getBalance()+ "| " + super.getTransactionDate();
         }
         else{

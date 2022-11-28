@@ -119,7 +119,7 @@ public class BankVO {
 
     @Override
     public String toString() {
-        return "이름: " +name + "|" + "은행명: " + bankName + "|"+ "계좌번호: " +  accountNum.replaceAll(LAST_10_CHAR_PATTERN, "**********") +"|"+ "입금액: " + isDeposit;
+        return "이름: " +name + "|" + "은행명: " + bankName + "|"+ "계좌번호: " +  accountNum.replaceAll(LAST_10_CHAR_PATTERN, "**********") +"|"+ "잔고: " + balance;
     }
 
 
