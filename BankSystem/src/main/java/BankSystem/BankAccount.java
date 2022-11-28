@@ -92,8 +92,14 @@ public class BankAccount {
             if (name.equals(bankUsers.get(i).getName())) {
                 bankUsers.remove(i);
                 System.out.println("삭제되었습니다.");
-            } else {
-                System.out.println("정보와 맞지 않습니다.");
+                break;
+            }else {
+                if (i < bankUsers.size() - 1) {
+                    continue;
+                } else {
+                    System.out.println("입력하신 정보를 확인해주세요");
+                }
+
             }
         }
     }
