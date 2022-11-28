@@ -1,4 +1,5 @@
 # 구해조 NINE BANK
+![nineImage](https://user-images.githubusercontent.com/101814294/204173428-677f4ac2-b30f-4204-ac4d-7861a022f951.png)
 
 
 ## 프로젝트 소개
@@ -8,7 +9,6 @@ Java를 이용한 은행 거래 프로그램 구현
 </p>
 
 <p align="center">
-GIF Images
 </p>
 
 <br>
