@@ -13,6 +13,19 @@ Java를 이용한 은행 거래 프로그램 구현
 
 <br>
 
+## 팀 목표
+
+1. OOP 개발방식을 이해하고 경험하자.
+
+2. 소통하고 서로 도와주는 개발자가 되자.
+
+3. Git, slack 등 협업 도구를 경험하고 활용하자.
+
+4. 제출 마감기한을 지키자.
+
+5. 팀 약속을 잘 지키자.
+<br>
+
 ## 기술 스택
 
  <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
